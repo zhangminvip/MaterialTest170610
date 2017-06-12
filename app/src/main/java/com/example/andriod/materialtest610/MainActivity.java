@@ -22,18 +22,18 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private Toolbar toolbar;
     private NavigationView navView;
+    private  ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         setSupportActionBar(toolbar);
         initView();
         initEvent();
 
 
-        ActionBar actionBar = getSupportActionBar();
+        actionBar = getSupportActionBar();
         if(actionBar != null)
         {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -57,12 +57,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
-
     }
 
-
+    /*
+    * 初始化视图
+    * */
     public void initView(){
          fab = (FloatingActionButton)findViewById(R.id.fab);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -71,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /*
+    * 初始化事件
+    *
+    * */
     public void initEvent(){
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +94,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /*
+    * 菜单点击事件
+    * */
     @Override
-
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch(item.getItemId())
@@ -99,11 +105,10 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
-
             default:
         }
-
         return true;
     }
+
 
 }
