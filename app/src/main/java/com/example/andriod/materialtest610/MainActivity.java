@@ -3,6 +3,7 @@ package com.example.andriod.materialtest610;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -63,8 +64,15 @@ public class MainActivity extends AppCompatActivity {
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"FAB clicked",Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                Snackbar.make(view,"Data deleted",Snackbar.LENGTH_SHORT)
+                        .setAction("Undo",new View.OnClickListener(){
+                           @Override
+                            public void onClick(View v){
+                               Toast.makeText(MainActivity.this,"Data restored",
+                                       Toast.LENGTH_SHORT).show();
+                           }
+                        }).show();
             }
         });
 
