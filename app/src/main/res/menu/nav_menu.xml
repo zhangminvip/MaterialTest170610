@@ -26,12 +26,5 @@
             android:id="@+id/nav_task"
             android:icon="@drawable/nav_task"
             android:title="Tasks"/>
-
-
-
-
-
-
     </group>
-
 </menu>
