@@ -26,19 +26,49 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setSupportActionBar(toolbar);
         initView();
         initEvent();
 
+    }
 
+    /*
+    * 初始化视图
+    * */
+    public void initView(){
+
+        fab = (FloatingActionButton)findViewById(R.id.fab);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        navView = (NavigationView)findViewById(R.id.nav_view) ;
+
+    }
+
+
+    /*
+    * 初始化事件
+    *
+    * */
+    public void initEvent(){
         actionBar = getSupportActionBar();
         if(actionBar != null)
         {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"FAB clicked",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
         navView.setCheckedItem(R.id.nav_call);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
@@ -57,31 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
-
-    /*
-    * 初始化视图
-    * */
-    public void initView(){
-         fab = (FloatingActionButton)findViewById(R.id.fab);
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        navView = (NavigationView)findViewById(R.id.nav_view) ;
-
-    }
 
 
-    /*
-    * 初始化事件
-    *
-    * */
-    public void initEvent(){
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"FAB clicked",Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 
